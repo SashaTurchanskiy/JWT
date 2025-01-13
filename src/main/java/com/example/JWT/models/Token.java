@@ -8,8 +8,6 @@ import lombok.Setter;
 
 @Entity
 @Table(name = "token_table")
-@Getter
-@Setter
 @AllArgsConstructor
 @NoArgsConstructor
 public class Token {
@@ -23,10 +21,50 @@ public class Token {
     @Column(name = "refresh_token")
     private String refreshToken;
     @Column(name = "is_logged_out")
+    @Access(AccessType.FIELD)
     private boolean loggedOut;
 
     @ManyToOne
     @JoinColumn(name = "user_id")
     private User user;
 
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public String getAccessToken() {
+        return accessToken;
+    }
+
+    public void setAccessToken(String accessToken) {
+        this.accessToken = accessToken;
+    }
+
+    public String getRefreshToken() {
+        return refreshToken;
+    }
+
+    public void setRefreshToken(String refreshToken) {
+        this.refreshToken = refreshToken;
+    }
+
+    public boolean isLoggedOut() {
+        return loggedOut;
+    }
+
+    public void setLoggedOut(boolean loggedOut) {
+        this.loggedOut = loggedOut;
+    }
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
+    }
 }
